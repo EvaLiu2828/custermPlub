@@ -1,0 +1,59 @@
+table {
+  border-collapse:collapse;
+  width:100%;
+  &:first-child {
+    margin-bottom: 20px;
+  }
+}
+
+tr {
+  height:30px;
+}
+th {
+  font-weight: normal;
+}
+td {
+  padding:1px 2px;
+}
+span {
+  display:inline-block;
+  text-align:right;
+  vertical-align: center;
+  color: $font-color-grey;
+}
+th span {
+  width:98%;
+  //line-height:30px;
+  padding-right: 10px;
+}
+td input {
+  width: 90%;
+  height:30px;
+  border: 1px solid $font-color-grey;
+  padding-left: 5px;
+  padding-right:5px;
+}
+td button {
+  width: 100px;
+  height:30px;
+  padding: 5px 20px;
+  margin-right: 10px;
+  color: $bg-color;
+  border-radius: 5px;
+  background: $theme-color;
+}
+.border-right {
+  border-right:1px #000 solid;
+}
+.border-left {
+  border-left:1px #000 solid;
+}
+.th-til3 {
+  width:4%;
+}
+.th-til4 {
+  width:1%;
+}
+.td-con3 {
+  width:10%;
+}

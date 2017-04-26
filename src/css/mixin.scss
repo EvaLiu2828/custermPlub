@@ -1,0 +1,187 @@
+// Mixin
+#bundle {
+  .borderele() {
+  position: relative;
+}
+
+  .border() {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #c8c7cc;
+  -webkit-transform-origin: 0 0;
+  left: 0;
+  right: 0;
+}
+}
+
+.rounded-corners (@radius: .2rem) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.bordered () {
+  border: 1px solid @border-color;
+}
+
+
+
+//实用工具 mixin
+//实用工具 mixin 用于与不相关的 CSS 结合以达到特定目的或任务。
+
+//Clearfix -- 清除浮动
+//建议为需要清除浮动的元素使用 .clearfix() mixin ，尽量不要直接添加 class="clearfix" 类。基于 Nicolas Gallagher 的 micro clearfix 代码。
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix {
+  clear: both;
+  overflow: hidden;
+}
+// Mixin
+//.clearfix() {
+//  &:before,
+//  &:after {
+//    content: " ";
+//    display: table;
+//  }
+//  &:after {
+//    clear: both;
+//  }
+//}
+
+// Usage
+//.container {
+//  .clearfix();
+//}
+
+
+//水平居中
+//让元素在其父元素中水平居中。需要设置 width 或 max-width 属性。
+
+// Mixin
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Usage
+//.container {
+//  width: 940px;
+//  .center-block();
+//}
+
+
+//尺寸助手 mixin
+//用于方便的指定对象的尺寸。
+
+// Mixins
+.size(@width; @height) {
+  width: @width;
+  height: @height;
+}
+
+.square(@size) {
+  .size(@size; @size);
+}
+
+// Usage
+//.image { .size(400px; 300px); }
+//.avatar { .square(48px); }
+
+
+//可调整大小的文本域
+//方便设置任何文本域或其他元素的尺寸可调整。默认依循浏览器默认行为 (both)，即垂直、水平都可以调整。
+
+// Mixin
+.resizable(@direction: both) {
+  // Options: horizontal, vertical, both
+  resize: @direction;
+  // Safari fix
+  overflow: auto;
+}
+
+//截断文本
+//此 mixin 用来以省略号代替被截断的文本。元素必须是 block 或 inline-block 级。
+
+// Mixin
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Usage
+//.branch-name {
+//  display: inline-block;
+//  max-width: 200px;
+//  .text-overflow();
+//}
+
+//视网膜屏幕（Retina）下的图片
+//通过指定两个图片路径和 @1x 图片尺寸，Bootstrap 还提供了对 @2x 媒体查询的支持。
+//如果你的页面上有很多图片，建议在一个单独的媒体查询中手工编写针对视网膜屏幕的 CSS 代码。
+
+// Mixin
+.img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+// Usage
+//.jumbotron {
+//  .img-retina("/img/bg-1x.png", "/img/bg-2x.png", 100px, 100px);
+//}
+
+//1px边框
+//.bottom-border() {
+//  #bundle > .borderele();
+//
+//  &:after {
+//    #bundle > .border();
+//    bottom: 0;
+//    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+//      -webkit-transform: scaleY(0.75);
+//    }
+//    @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+//      -webkit-transform: scaleY(0.5);
+//    }
+//    @media only screen and (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+//      -webkit-transform: scaleY(0.333333333);
+//    }
+//  }
+//}
+//
+////1px边框
+//.top-border() {
+//  #bundle > .borderele();
+//
+//  &:before {
+//    #bundle > .border();
+//    top: 0;
+//    z-index: 9;
+//
+//    @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+//      -webkit-transform: scaleY(0.75);
+//    }
+//    @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+//      -webkit-transform: scaleY(0.5);
+//    }
+//    @media only screen and (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+//      -webkit-transform: scaleY(0.333333333);
+//    }
+//  }
+//}

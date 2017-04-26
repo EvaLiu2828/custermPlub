@@ -1,0 +1,53 @@
+//base
+//base
+$theme-color: #0090e6;   //主题颜色
+$theme-color2: #49a5e8;   //主题颜色
+$bg-color: #f8f8f8;      //页面背景颜色
+$bg-color2: #fff;      //页面背景颜色
+$bg-color3: #eff4fa;      //页面背景颜色
+$bg-color4: #dfecfb;      //页面背景颜色
+$border-color: #D7D7D7;  //边框颜色
+$disabled-color: #e6e6e6; //禁用按钮颜色
+
+
+
+//font-color
+$font-color-grey: #888888; //灰色文字
+$font-color-blue: #0090e6; //灰色文字
+$font-color-red: #dc664a; //灰色文字
+$font-color-black: #555555; //灰色文字
+$font-color-white: #fff;  //白色
+
+//list
+$list-color: #fff;  //列表背景颜色
+$list-li-height: 60px;  //列表项高度
+$list-icon-color: #c3c3c3;  //图标颜色
+$list-active-color: #e0e0e0;  //active颜色
+$list-icon-fs : 16px;
+
+//message
+$message-error-color: #f7342e;   //错误提示
+
+//input
+$inputHeight: 38px;   //输入框高度
+$inputfs: 15px; //输入框字体大小
+$delpng: "../../images/delete.png"; //删除图标
+
+//checkbox
+$checkbox-duration: .4s;  //单选or 复选框动画时间
+$checkbox-fontSize: .8rem;
+
+$body-height: 100%;
+//header
+$header-height : 10%;
+//footer
+$footer-height : 65px;
+//state
+$state-proceed-color: #fab32a;  //进行中
+$state-proceed-color2: #e8f3ff;  //进行中
+$state-refuse-color: #ffd2da;  //拒绝
+$state-end-color: #e3e3e3;  //完成
+
+//icon-left-arrow
+$icon-left-arrow-before: #888888;
+$icon-left-arrow-after: #e6e6e6;
