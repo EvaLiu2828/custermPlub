@@ -8,7 +8,7 @@
             外访列表
           </el-button>
         </router-link>
-        <router-link :to="{name: 'visitmap'}">
+        <router-link :to="{name: 'visitmap'}" v-show="show">
           <el-button type="info" size="small">
             外访地图
           </el-button>
@@ -47,6 +47,7 @@
   .bottom {
     clear: both;
     overflow: hidden;
+    height: 2rem;
     margin-bottom: 1rem;
   }
   .right {

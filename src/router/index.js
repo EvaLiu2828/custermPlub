@@ -6,6 +6,7 @@ import Visit from '../components/Visit'
 import VisitList from '../components/VisitList'
 import VisitMap from '../components/VisitMap'
 import Users from '../components/Users'
+import OrbitSearch from '../components/OrbitSearch'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -33,7 +34,12 @@ export default new Router({
     {
       path: '/users',
       name: 'users',
-      component: Users
+      component: Users,
+    },
+    {
+      path: '/orbitsearch',
+      name: 'orbitsearch',
+      component: OrbitSearch,
     },
     {//默认路径
       path: "*",
