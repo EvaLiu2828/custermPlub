@@ -4,7 +4,7 @@
       <b-searchVisit
         @signMsg="signMsgArr"></b-searchVisit>
       <b-signMsgTab
-        v-bind:signList="signListArr"></b-signMsgTab>
+        :signList="signListArr"></b-signMsgTab>
   </div>
 </template>
 <script>
@@ -32,9 +32,15 @@
         console.log('父组件接收到的数据----');
         console.log(msg);
         this.signListArr = [];
-        this.signListArr = msg.msg;   //往list组件发送数据
+        this.signListArr = msg.message;   //往list组件发送数据
       }
     }
   }
 
 </script>
+<style lang="scss" scoped>
+.users {
+    height: 100%;
+    overflow-y: auto;
+}
+</style>

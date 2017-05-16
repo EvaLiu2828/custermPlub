@@ -4,27 +4,34 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource);
 
 //请求服务ip
-let https_url_userGroup = 'http://10.100.60.58:8080/collectionPc/scheduleController';
+let serveUrl = 'http://collectionpc.creditease.corp';
+let https_url_userGroup = serveUrl + '/scheduleController'; //排程
+let https_url_visitManager = serveUrl + '/visitManagerController'; //人员管理
 //接口
+let GetQueue = '/getQueue';   //外访队列
 let GetTask = '/getTask';   //外访任务
 let EnsureSchedule = '/ensureSchedule'  //确认排程
 let DeleteSchedule = '/deleteSchedule'  //取消排程
-let SearchSign = '/searchSign'  //签到查询
-let SearchOrbit = '/searchOrbit'  //轨迹查询
+let SelectVisit = '/selectVisit'  //签到查询
+let SelectTrack = '/selectTrack'  //轨迹查询
 
 /*
- * 玉刚： http://10.100.62.21:8080/collectionP/scheduleController
- * 婷婷： http://10.100.60.58:8080/collectionP/scheduleController
+ * 线上： http://collectionpc.creditease.corp
+ * 测试： http://10.143.32.61:8080/collectionPc
+ * 玉刚： http://10.100.62.21:8080/collectionPc
+ * 婷婷： http://10.100.60.58:8080/collectionPc
+ * 曹哥： http://10.100.60.145:8080/collectionPc
  **/
 
 export default {
   //接口
   config: {
+    getQueue: https_url_userGroup + GetQueue,    //查询外访队列
     getTask: https_url_userGroup + GetTask,    //查询外访任务
     ensureSchedule: https_url_userGroup + EnsureSchedule,    //确认排程
     deleteSchedule: https_url_userGroup + DeleteSchedule,    //取消排程
-    searchSign: https_url_userGroup + SearchSign,    //签到查询
-    searchOrbit: https_url_userGroup + SearchOrbit,    //签到查询
+    selectVisit: https_url_visitManager + SelectVisit,    //签到查询
+    selectTrack: https_url_visitManager + SelectTrack,    //签到查询
   },
   //请求方法
   commitAjax : {

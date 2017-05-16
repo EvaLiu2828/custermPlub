@@ -10,7 +10,7 @@
             >
             </el-table-column>
             <el-table-column
-            prop="userId"
+            prop="userID"
             label="客户id"
             >
             </el-table-column>
@@ -28,7 +28,13 @@
             </el-table-column>
         </el-table>
         <div class="block">
-            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-size="selectedLimit" layout="total, prev, pager, next" :total="count">
+            <el-pagination 
+                @size-change="handleSizeChange" 
+                @current-change="handleCurrentChange" 
+                :current-page="currentPage" 
+                :page-size="selectedLimit" l
+                ayout="total, prev, pager, next" 
+                :total="count">
             </el-pagination>
         </div>
         <div class="orbit-map">
@@ -68,6 +74,7 @@ export default {
             console.log(this.orbitList);
             this.orbitListArr = [];
             this.orbitListArr = this.orbitList;
+            this.currentPage = 1;  //初始化显示页
             if(this.orbitListArr.length != null) {
                 this.count = this.orbitListArr.length;
                 console.log(this.count);
@@ -104,6 +111,6 @@ export default {
 }
 .orbit-map {
     margin-top: 1rem;
-    height: 60%;
+    height: 50%;
 }
 </style>

@@ -35,7 +35,7 @@ export default {
         //百度地图初始化
         map = new BMap.Map('orbitmap') //在百度地图容器内创建地图
         point = new BMap.Point(116.404, 39.915);
-        map.centerAndZoom(point,10);
+        map.centerAndZoom(point,8);
         top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
         map.addControl(top_right_navigation);
         map.enableScrollWheelZoom(true);
@@ -46,13 +46,11 @@ export default {
             console.log(this.gpsList);
             this.GPSListArr = [];
             this.GPSListArr = this.gpsList.gpsList;
-            console.log('GPSList');
-            console.log(this.GPSListArr);
-            let userName = '<div><span>外访人员：</span>'+ this.gpsList.userName +'</div></br>';
-            console.log(this.gpsList.userName);
+            let title = '<h5 style="margin-top: 0.3rem; margin-bottom: 0.5rem; color: #20a0ff">信息窗口</h5></br>';
+            let userName = this.gpsList.userName;
             //百度地图初始化   
             map = new BMap.Map('orbitmap') //在百度地图容器内创建地图
-            map.centerAndZoom(point, 10);
+            map.centerAndZoom(point, 8);
             top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
             map.addControl(top_right_navigation);
             map.enableScrollWheelZoom(true);
@@ -60,55 +58,59 @@ export default {
             this.points = [];  //points初始化
             let content = '';
             for(let i=0; i<this.GPSListArr.length; i++){
-                let address = '<div><span>签到地址：</span>'+ this.GPSListArr[i].gpsAddressOtherGPS +'</div></br>';
-                let orbitTime = '<div><span>签到时间：</span>'+ this.GPSListArr[i].operateTime +'</div></br>';
-                let orbitOrder = '<div><span>外访顺序：</span>'+ (i+1) +'</div></br>';
-                content = userName + orbitOrder + address + orbitTime;
+                let address = '<div style="line-height:18px; vertical-align: text-top; "><span style="float: left; color:#8391a5">地址：</span><span style="float: left; display: inline-block; width:184px;">'+ this.GPSListArr[i].gpsAddressOtherGPS +'</span></div></br>';
+                let orbitTime = '<div style="line-height:18px; vertical-align: text-top; "><span style="float: left; color:#8391a5">时间：</span><span style="float: left; display: inline-block; width:184px;">'+ this.GPSListArr[i].operateTime +'</span></div></br>';
+                content = title + address + orbitTime;
+                let log = '{测试}index:'+i+'--人员:'+userName+'--lng:'+this.GPSListArr[i].gpsAddrEastLongitudeGPS+'--lat:'+this.GPSListArr[i].gpsAddrNorthernLatitudeGPS; //临时测试使用
                 point = new BMap.Point(this.GPSListArr[i].gpsAddrEastLongitudeGPS, this.GPSListArr[i].gpsAddrNorthernLatitudeGPS);
-                this.addMarker(point,i,content);
+                this.addMarker(point,i,content,log);
                 this.points.push(point);
             }
             console.log('坐标List');
             console.log(this.points);
+            console.log(this.points.length);
             this.addCurve(this.points);
         },
-        addMarker(point,index,content){
-            // console.log('创建点时的坐标值');
-            // console.log(point);
-            // console.log('创建点时的索引值');
-            // console.log(index);
+        addMarker(point,index,content,log){
             //创建点
-            let marker = new BMap.Marker(point);
+            let notIcon = new BMap.Icon("static/imgs/map_orbit.png", new BMap.Size(22, 29),{
+                imageSize : new BMap.Size(22,29)
+            })
+
+            let marker = new BMap.Marker(point,{icon: notIcon});
+            marker.setTop(true);
             map.addOverlay(marker);            //增加点
+            map.centerAndZoom(point, 8);
             let label = new BMap.Label(index+1,{ //增加标记顺序
-                    offset:new BMap.Size(5,4),
+                    offset:new BMap.Size(0,3),
                 });
                 label.setStyle({   //修改label样式
-                    color: '#fff',
+                    color: '#20a0ff',
+                    textShadow:'#fff 1px 0 0,#fff 0 1px 0,#fff -1px 0 0,#fff 0 -1px 0',
                     background: 'none',
-                    border: 'none'
+                    border: 'none',
+                    fontSize: '6px',
+                    textAlign: 'center',
+                    width: '22px'
                 });
             opts = {
                 width : 200,     // 信息窗口宽度
-                height: 130,     // 信息窗口高度
-                title : "信息窗口" , // 信息窗口标题
-                // enableMessage:true//设置允许信息窗发送短息
+                height: 90,     // 信息窗口高度
             };
             marker.setLabel(label);
             let _this = this;
             marker.addEventListener("click",function(e){
-                _this.openInfo(content,e)
+                _this.openInfo(content,e,log);
             });
         },
         addCurve(points){
-            // console.log('创建弧线对象时的坐标值');
-            // console.log(points);
-            let polyline = new BMap.Polyline(points, {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.3}); //创建弧线对象
+            let polyline = new BMap.Polyline(points, {strokeColor:"#20a0ff", strokeWeight:2, strokeOpacity:0.6}); //创建弧线对象
             map.addOverlay(polyline); //添加到地图中
         },
-        openInfo(content,e){
+        openInfo(content,e,log){
             console.log(content);
-            console.log(e)
+            console.log(e);
+            console.log(log);
             let p = e.target;
             let point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
             let infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
@@ -122,5 +124,8 @@ export default {
     background: none;
     border: none;
     color: #fff;
+}
+.title {
+    line-height: 1rem;
 }
 </style>

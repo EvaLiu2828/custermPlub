@@ -30,7 +30,7 @@ export default {
             console.log('父组件接收到的数据----');
             console.log(msg);
             this.orbitListArr = [];
-            this.orbitListArr = msg.msg;
+            this.orbitListArr = msg.message;
         }
     }
 }

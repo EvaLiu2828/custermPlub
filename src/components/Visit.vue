@@ -21,11 +21,6 @@
   </div>
 </template>
 <script>
-  //请求文件
-  import Config from '../config/config.js'
-  //假数据
-  import MockFile from '../mock/mock_file'
-
   export default {
     name: 'visit',
     data(){
@@ -39,7 +34,7 @@
 </script>
 <style lang="scss" scoped>
   .Visit {
-    height: 100%;
+    height: 95%;
   }
   .visit_view {
     height: 100%;

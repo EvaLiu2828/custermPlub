@@ -114,8 +114,6 @@
 <script>
 //请求文件
 import Config from '../config/config.js'
-//假数据
-import MockFile from '../mock/mock_file'
 export default {
     name: 'visitlist',
     data() {

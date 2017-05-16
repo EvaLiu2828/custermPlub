@@ -43,14 +43,13 @@
                             placeholder="请选择"
                             multiple
                             @change="selectChange(scope)"
-                            v-model= "scope.row.visitorNo"
+                            v-model= "scope.row.userName"
                             size="small">
                             <el-option 
                             v-for="item in team" 
                             :value="item.id" 
                             :label="item.userName" 
-                            :key="item.userName"
-                            >
+                            :key="item.id">
                             </el-option>
                         </el-select>
                     </template>
@@ -106,24 +105,11 @@
                             </el-input>
                         </template>
                 </el-table-column>
-                <el-table-column
-                    fixed="right"
-                    label="操作"
-                    width="65">
-                    <template scope="scope">
-                        <el-button
-                        @click.native.prevent="deleteRow(scope.$index, visitArray)"
-                        type="text"
-                        size="small"
-                        center>
-                        移除
-                        </el-button>
-                    </template>
-                </el-table-column>
         </el-table>
     </div>
 </template>
 <script>
+
 export default {
     name: 'bReadyVisit',
     data(){
@@ -147,7 +133,8 @@ export default {
             appointDate: '',    //选择的外访时间
             visitSeq: '',        //外访顺序
             multipleSelection: [],  //排程列表
-            getReadyVisit: []
+            getReadyVisit: [],
+            userName: []
         }
     },
     props: {
@@ -166,7 +153,6 @@ export default {
     },
     methods: {
         visit() {
-            console.log(this.visitArray);
             this.visitArray = [];  //清空列表数据
             this.date = this.systemDate;
             this.visitArray = this.readyVisit;
@@ -175,7 +161,8 @@ export default {
             console.log(this.visitArray);
         },
         selectChange (scope) {
-            // console.log(scope);
+            console.log(scope);
+            scope.row.visitorNo = scope.row.userName;
         },
         //多选
         handleSelectionChange(val) {
@@ -184,14 +171,16 @@ export default {
             this.getReadyVisitList(this.multipleSelection);
         },
         deleteRow(index, rows) {
+            console.log(rows);
             rows.splice(index, 1);
+            this.getReadyVisitList(this.multipleSelection);
         },
         getReadyVisitList (r){
             console.log('子组件传递的数据----');
             console.log(r);
             this.getReadyVisit = [];
             this.getReadyVisit = r;
-            this.$emit('readyVisitList',this.getReadyVisit);  //向父组件推送数据
+            this.$emit('readyVisitArr',this.getReadyVisit);  //向父组件推送数据
         }
     }
 }
