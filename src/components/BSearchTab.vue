@@ -33,7 +33,7 @@
 import Config from '../config/config.js'
 let resource = Config.commitAjax;  //服务方法
 
-// import mockfile from '../mock/mock_file.js'
+import mockfile from '../mock/mock_file.js'
 export default {
     name: 'bSearchTab',
     data (){

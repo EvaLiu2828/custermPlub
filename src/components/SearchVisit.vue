@@ -32,7 +32,7 @@
 <script>
 //请求文件
 import Config from '../config/config.js'
-// import seachVisit from '../mock/seachVisit.js'
+import seachVisit from '../mock/seachVisit.js'
 let resource = Config.commitAjax;  //服务方法
 
 export default {

@@ -4,7 +4,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource);
 
 //请求服务ip
-let serveUrl = 'http://collectionpc.creditease.corp';
+let serveUrl = 'http://10.143.32.61:8080/collectionPc';
 let https_url_userGroup = serveUrl + '/scheduleController'; //排程
 let https_url_visitManager = serveUrl + '/visitManagerController'; //人员管理
 //接口
@@ -16,7 +16,6 @@ let SelectVisit = '/selectVisit'  //签到查询
 let SelectTrack = '/selectTrack'  //轨迹查询
 
 /*
- * 线上： http://collectionpc.creditease.corp
  * 测试： http://10.143.32.61:8080/collectionPc
  * 玉刚： http://10.100.62.21:8080/collectionPc
  * 婷婷： http://10.100.60.58:8080/collectionPc

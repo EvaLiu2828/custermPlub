@@ -33,7 +33,7 @@
 import Config from '../config/config.js'
 let resource = Config.commitAjax;  //服务方法
 
-// import mockfile from '../mock/seachOrbit.js'
+import mockfile from '../mock/seachOrbit.js'
 
 export default {
     name: 'seachOrbit',

@@ -1,25 +1,27 @@
 <template>
     <div class="VisitMap">
-        <div class="search-tab">
-            <b-searchTab
-            :queryList="queryList"
-            @queryuser="queryUser"></b-searchTab>
-        </div>
-        <div class="bottom">
-            <el-button 
-                :plain="true" 
-                type="info" 
-                size="small"
-                :readyVisit="visitArray" 
-                :disabled="disabled"
-                @click="confirm(getVisitData)">确定排程</el-button>
-            <el-button 
-                :plain="true" 
-                type="info" 
-                size="small"
-                :disabled="disabled"
-                @click="cancel(getVisitData)">取消排程</el-button>
-        </div>
+        <el-row>
+            <el-col :span="16">
+                <b-searchTab
+                :queryList="queryList"
+                @queryuser="queryUser"></b-searchTab>
+            </el-col>
+            <el-col :span="8" class="bottom">
+                <el-button 
+                    :plain="true" 
+                    type="info" 
+                    size="small"
+                    :readyVisit="visitArray" 
+                    :disabled="disabled"
+                    @click="confirm(getVisitData)">确定排程</el-button>
+                <el-button 
+                    :plain="true" 
+                    type="info" 
+                    size="small"
+                    :disabled="disabled"
+                    @click="cancel(getVisitData)">取消排程</el-button>
+            </el-col>
+        </el-row>
         <b-map 
             :visitData="visitData" 
             @readyVisitArray='readyVisitList'></b-map>
@@ -38,7 +40,7 @@ let map;
 //请求文件
 import Config from '../config/config.js'
 let resource = Config.commitAjax;  //服务方法
-// import query from '../mock/query.js'
+import query from '../mock/query.js'
 
 import bmap from '../components/Bmap'
 import bReadyVisit from '../components/BReadyVisit.vue'
@@ -294,9 +296,6 @@ export default {
     margin-bottom: 1rem;
 }
 .bottom {
-    float: right;
-    width: 30%;
-    margin-bottom: 1rem;
     text-align: right;
 }
 </style>
