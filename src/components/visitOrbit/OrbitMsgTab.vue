@@ -103,7 +103,7 @@ export default {
 <style lang="scss" scoped>
 .orbitmsgtab {
     margin-top: 1rem;
-    height: 80%;
+    height: 90%;
 }
 .block {
     width: 100%;
@@ -111,6 +111,6 @@ export default {
 }
 .orbit-map {
     margin-top: 1rem;
-    height: 50%;
+    height: 75%;
 }
 </style>

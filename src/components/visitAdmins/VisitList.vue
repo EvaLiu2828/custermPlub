@@ -113,7 +113,7 @@
 </template>
 <script>
 //请求文件
-import Config from '../config/config.js'
+import Config from '../../base/config.js'
 export default {
     name: 'visitlist',
     data() {

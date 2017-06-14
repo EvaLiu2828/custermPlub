@@ -4,8 +4,8 @@
             :data="visitArray"
             ref="table"
             border
-            style="width: 100%; height: 85%"
-            height="85%"
+            style="width: 100%; height: 90%"
+            height="90%"
             stripe
             :default-sort = "{prop: ['visitorDate','appointDate'], order: 'descending'}"
             @selection-change="handleSelectionChange($event)">
@@ -115,14 +115,14 @@ export default {
     data(){
         return {
             visitTabStyle: {
-                height: '45%'
+                height: '35%'
             },
             visitArray: [],
             team: [],  //外访人员列表
             visitorNo: [],  //选出来的人员队列
             pickerOptions1: {  //可选日期
                 disabledDate:(time) => {
-                    return time.getDate() < new Date(this.date).getDate() || time.getDate() > new Date(this.date).getDate()+3;
+                    return time.getTime() < new Date(this.date).getTime() - 3600 * 1000 * 24 || time.getTime() > new Date(this.date).getTime()+3600 * 1000 * 24 * 3;
                 }
             },
             dateStyle: {

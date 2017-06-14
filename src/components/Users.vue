@@ -9,11 +9,11 @@
 </template>
 <script>
   //请求文件
-  import Config from '../config/config.js'
+  import Config from '../base/config.js'
 
   //添加查询组件
-  import searchVisit from './SearchVisit.vue'
-  import signMsgTab from './SignMsgTab.vue'
+  import searchVisit from './visitSign/SearchVisit.vue'
+  import signMsgTab from './visitSign/SignMsgTab.vue'
   export default {
     name: 'users',
     data(){

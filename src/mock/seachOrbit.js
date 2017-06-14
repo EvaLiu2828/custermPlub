@@ -1,12 +1,12 @@
 import MockJs from  "mockjs"
 
 var data = MockJs.mock(
-  'http://10.143.32.61:8080/collectionPc/visitManagerController/selectTrack',
+  'http://10.143.32.61:8080/visitManagerController/selectTrack',
   {
     'message|5': [{
       'userName': '@FIRST',        //客户姓名
       'userID|1': /\d{5,10}/,           //客户id
-      'gpsList|5-10': [{
+      'gpsList|10-60': [{
         'gpsAddressOtherGPS': '包河区金寨路1号',  //定位地址
         'gpsAddrEastLongitudeGPS|116.3': 1,   //东经
         'gpsAddrNorthernLatitudeGPS|39.3': 1, //西经

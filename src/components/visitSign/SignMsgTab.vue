@@ -15,15 +15,18 @@
             </el-table-column>
         </el-table>
         <div class="block">
-            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-size="selectedLimit" layout="total, prev, pager, next" :total="count">
+            <el-pagination 
+                @size-change="handleSizeChange" 
+                @current-change="handleCurrentChange" 
+                :current-page="currentPage" 
+                :page-size="selectedLimit" 
+                layout="total, prev, pager, next" 
+                :total="count">
             </el-pagination>
         </div>
     </div>
 </template>
 <script>
-//请求文件
-import Config from '../config/config.js'
-let resource = Config.commitAjax;  //服务方法
 
 export default {
     name: 'signMsgTab',
@@ -64,7 +67,6 @@ export default {
             this.currentPage = val;
             console.log(`当前页: ${val}`);
             this.datas = this.signListArr.slice(this.selectedLimit*(this.currentPage-1),this.selectedLimit*this.currentPage);
-
         }
     }
 }

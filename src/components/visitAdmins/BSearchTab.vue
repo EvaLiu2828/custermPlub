@@ -30,10 +30,12 @@
 </template>
 <script>
 //请求文件
-import Config from '../config/config.js'
+import Config from '../../base/config.js'
 let resource = Config.commitAjax;  //服务方法
-
-import mockfile from '../mock/mock_file.js'
+import Common from '../../base/common.js'  //公用方法
+let alertBox = Common.messageBox;  //消息提示方法
+//假数据
+import mockfile from '../../mock/mock_file.js'
 export default {
     name: 'bSearchTab',
     data (){
@@ -56,7 +58,7 @@ export default {
     methods: {
         query (){
             this.queryId = '';
-            console.log(this.queryList);
+            // console.log(this.queryList);
             this.queryTeam = this.queryList;
             console.log(this.queryTeam);
         },
@@ -76,6 +78,7 @@ export default {
                 QueueId
             ).then((res) => {
                 console.log(res);
+                this.queryId = '';
                 if(res.body.codeInfo == 0){
                     console.log(res.body);
                     let queryuser = res.body;
@@ -83,13 +86,14 @@ export default {
                 } else {
                    if(res.body.msgInfo){
                       let msg = res.body.msgInfo
-                      this.error(msg);
+                      alertBox.alertMessage({
+                         TextMessage: msg,
+                         Type: 'error',
+                         duration: 2000
+                      });      
                    }
                 }
-            }).catch((error) => {
-                console.log(error);
-                this.error("网络错误!");
-            })
+            });
         }
     }
 }

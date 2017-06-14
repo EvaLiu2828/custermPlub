@@ -1,7 +1,7 @@
 import MockJs from  "mockjs"
 
 var data = MockJs.mock(
-  'http://10.143.32.61:8080/collectionPc/visitManagerController/selectVisit',
+  'http://10.143.32.61:8080/visitManagerController/selectVisit',
   {
     'message|100': [{
       'taskID': /\d{5,10}/,        //任务单号

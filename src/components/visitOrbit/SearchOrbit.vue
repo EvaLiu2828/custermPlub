@@ -30,10 +30,15 @@
 </template>
 <script>
 //请求文件
-import Config from '../config/config.js'
+import Config from '../../base/config.js'
 let resource = Config.commitAjax;  //服务方法
 
-import mockfile from '../mock/seachOrbit.js'
+import Common from '../../base/common.js'  //公用方法
+let setTime = Common.setTime;      //时间设置
+let alertBox = Common.messageBox;  //消息提示方法
+
+//假数据
+// import mockfile from '../../mock/seachOrbit.js'
 
 export default {
     name: 'seachOrbit',
@@ -63,8 +68,8 @@ export default {
         searchClick (name, time){
             let selectTrackUrl = Config.config.selectTrack; //外访任务服务接口
             console.log(selectTrackUrl);
-            this.startDate = this.getForTime(time[0]);
-            this.endDate = this.getForTime(time[1]);
+            this.startDate = setTime.getForTime(time[0]);
+            this.endDate = setTime.getForTime(time[1]);
             console.log(name+'--'+this.startDate+'--'+this.endDate);
             let selectTrackDate = {
               userName: name,
@@ -91,47 +96,15 @@ export default {
                 } else {
                    if(res.body.msgInfo){
                       let msg = res.body.msgInfo
-                      this.error(msg);
+                      alertBox.alertMessage({
+                         TextMessage: msg,
+                         Type: 'error',
+                         duration: 2000
+                      });      
                    }
                 }
-            }).catch((error) => {
-                this.error("网络错误!");
-            })
-        },
-        success(m) {
-            this.$message({
-            showClose: true,
-            message: m,
-            type: 'success'
             });
         },
-        error(m){
-            this.$message({
-                showClose: true,
-                message: m,
-                type: 'error'
-            });
-        },
-        //补零
-        addPreZero (num){
-            if(num < 10){
-                return '0' + num;
-            } else {
-                return num;
-            }
-        },
-        //时间转换
-        getForTime (time){
-            let year = time.getFullYear(); // 年
-            let month = this.addPreZero(time.getMonth()+1); // 月
-            let date = this.addPreZero(time.getDate()); // 日
-            let hour = this.addPreZero(time.getHours());  //时
-            let minutes = this.addPreZero(time.getMinutes());  //分
-            let seconds = this.addPreZero(time.getSeconds());  //分
-
-            time= year + '-' + month + '-' + date+ ' ' +hour+':'+minutes+':'+seconds;
-            return time;
-        }               
     }
 }
 </script>

@@ -89,7 +89,7 @@ export default {
                     textShadow:'#fff 1px 0 0,#fff 0 1px 0,#fff -1px 0 0,#fff 0 -1px 0',
                     background: 'none',
                     border: 'none',
-                    fontSize: '6px',
+                    fontSize: '12px',
                     textAlign: 'center',
                     width: '22px'
                 });

@@ -8,12 +8,9 @@
     </div>
 </template>
 <script>
-//请求文件
-import Config from '../config/config.js'
-
 //添加查询组件
-import searchOrbit from './SearchOrbit.vue'
-import orbitMsgTab from './OrbitMsgTab.vue'
+import searchOrbit from './visitOrbit/SearchOrbit.vue'
+import orbitMsgTab from './visitOrbit/OrbitMsgTab.vue'
 export default {
     name: 'orbitsearch',
     data(){

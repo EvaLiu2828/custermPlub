@@ -1,19 +1,5 @@
 <template>
   <div id="app">
-    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1">
-          <router-link :to="{name: 'visit'}" class="White">外访排程管理</router-link>
-      </el-menu-item>
-      <el-submenu index="3">
-          <template slot="title">外访人员管理</template>
-          <el-menu-item index="2-1">
-              <router-link :to="{name: 'users'}">签到查询</router-link>
-          </el-menu-item>
-          <el-menu-item index="2-2">
-              <router-link :to="{name: 'orbitsearch'}">工作轨迹查询</router-link>
-          </el-menu-item>
-      </el-submenu>
-    </el-menu>
     <div class="table">
       <router-view></router-view>
     </div>
